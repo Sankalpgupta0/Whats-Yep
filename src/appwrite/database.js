@@ -13,16 +13,17 @@ export class DataBaseService{
     }
 
     //  for users
-    async createUserDatabase(userId, userName, userPassword){
+    async createUserDatabase(userId, Name, userPassword, userName){
         try{
             return await this.databases.createDocument(
                 envImport.appwriteDatabaseId,
                 envImport.appwriteCollectionId2,
                 userId,
                 {
-                    name:userName,
+                    name: Name,
                     ID: userId,
                     password: userPassword,
+                    username: userName,
                 }
             )
         } catch(error){
@@ -37,7 +38,20 @@ export class DataBaseService{
                 envImport.appwriteCollectionId2,
             )
         } catch (error) {
-            console.log("Appwrite serive :: getMessages :: error", error);
+            console.log("Appwrite serive :: getAllUsers :: error", error);
+            return false
+        }
+    }
+
+    async getUser(id){
+        try {
+            return await this.databases.getDocument(
+                envImport.appwriteDatabaseId,
+                envImport.appwriteCollectionId2,
+                id          
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: getMessage :: error", error);
             return false
         }
     }

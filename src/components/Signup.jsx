@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import authService from "../appwrite/auth.js";
 import { useNavigate } from "react-router-dom";
@@ -13,26 +13,53 @@ const Signup = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [validName, setValidName] = useState(false)
     const [avatar, setAvatar] = useState("");
 
     const signupbtn = async (e) => {
-        let user ;
-        if (name.trim() === "" || email.trim() == "" || password.trim() == "") {
-            return alert("enter Credential carefully");
+        let user;
+        if (name.trim() === "" || email.trim() == "" || password.trim() == "" || username.trim() == "") {
+            return alert("Enter All Credential");
         } else {
             user = await authService.createAccount({ email, password, name });
             if (user) {
                 const userData = await authService.getCurrentUser();
-                await dataBaseService.createUserDatabase(user.userId, name, password)
-                if (userData) dispatch(login(userData));
+                await dataBaseService.createUserDatabase(user.userId, name, password, username)
+                if (userData) {
+                    dispatch(login(userData));
+                }
                 navigate("/users");
             }
             // TODO: add avatar feature
         }
 
     };
+    // TODO: username
+    useEffect(() => {
+        SelectUserName();
+    }
+    , [username])
+
+    const SelectUserName = async() => {
+        try {
+            const users = await dataBaseService.getAllUsers();
+
+            (users.documents).map((user) => {
+                if(username == user.username){
+                    setValidName(false)
+                } else {
+                    setValidName(true)
+                }
+            })
+        } catch (error) {
+            console.log("Error in SelectUserName :: " +  error);
+        }
+    }
+
+
     return (
-        <div className="h-screen w-screen flex justify-center items-center"> 
+        <div className="h-screen w-screen flex justify-center items-center">
             <div className="sm:w-1/2 bg-slate-100 px-10 rounded-xl w-full">
                 <div className="mx-auto ">
                     <h1 className="text-xl font-bold text-center shadow-lg">
@@ -51,6 +78,26 @@ const Signup = () => {
                         placeholder="Enter your full Name :"
                         className="h-12 w-full px-5 rounded-md my-1"
                     />
+
+                    <input
+                        type="text"
+                        lable="username"
+                        value={username}
+                        onChange={(e) => setUsername((e.target.value).replace(/ /g, '-'))}
+                        placeholder="Enter your username :"
+                        className="h-12 w-full px-5 rounded-md my-1"
+                    />
+
+                    {   
+                        username.length != 0 ? (
+                            validName ? <p className="text-green-500 text-center">
+                                Username is valid
+                            </p> : <p className="text-red-500 text-center">
+                                username is taken
+                            </p>
+                        )
+                        : null
+                    }
 
                     <input
                         type="email"
@@ -83,7 +130,8 @@ const Signup = () => {
                     </label> */}
 
                     <button
-                        className="bg-blue-600 w-full my-3 py-2 rounded-lg text-white text-center"
+                        className="bg-blue-600 w-full my-3 py-2 rounded-lg text-white text-center hover:bg-blue-800"
+                        disabled = {!validName}
                         onClick={signupbtn}
                     >
                         Create Account

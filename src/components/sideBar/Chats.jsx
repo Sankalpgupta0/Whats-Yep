@@ -52,10 +52,11 @@ const Chats = () => {
 
       {
         users.map((user) => {
+          // console.log(user);
           if (user.ID !== CurrentUserId){
             return (
               <div key={user.ID}>
-                <Chat userName={user.name} userId={user.ID} />
+                <Chat Name={user.name} userName={user.username} userId={user.ID}/>
               </div>
             )
           }
