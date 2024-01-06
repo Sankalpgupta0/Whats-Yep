@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom'
 import authService from '../../appwrite/auth.js';
 import Logout from './Logout/logout.jsx'
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
@@ -29,7 +30,9 @@ const Header = () => {
     return (
         <div className='max-sm:h-40 h-20 w-full bg-slate-900 flex justify-between items-center p-5'>
             <div>
-                <p className=' text-white'>What's Yep👍</p>
+                <Link to="/users">
+                    <p className=' text-white'>What's Yep👍</p>
+                </Link>
             </div>
             <div className='flex '>
                 <div className='mr-10 flex items-center'>
