@@ -46,7 +46,7 @@ const Signup = () => {
             const users = await dataBaseService.getAllUsers();
 
             (users.documents).map((user) => {
-                if(username == user.username){
+                if((username).toLowerCase() == (user.username).toLowerCase()){
                     setValidName(false)
                 } else {
                     setValidName(true)
@@ -83,7 +83,7 @@ const Signup = () => {
                         type="text"
                         lable="username"
                         value={username}
-                        onChange={(e) => setUsername((e.target.value).replace(/ /g, '-'))}
+                        onChange={(e) => setUsername((e.target.value).toLowerCase().replace(/ /g, '-'))}
                         placeholder="Enter your username :"
                         className="h-12 w-full px-5 rounded-md my-1"
                     />
