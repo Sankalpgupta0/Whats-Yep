@@ -62,7 +62,7 @@ const Login = () => {
                     />
 
                     <button
-                        className="bg-blue-600 w-full my-3 py-2 rounded-lg text-white"
+                        className="bg-blue-600 w-full my-3 py-2 rounded-lg text-white text-center"
                         onClick={loginBtn}
                     >
                         Sign in

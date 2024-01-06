@@ -3,7 +3,7 @@ import {logout} from '../../store+slice/authSlice.js'
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom'
 import authService from '../../appwrite/auth.js';
-
+import Logout from './Logout/logout.jsx'
 
 const Header = () => {
 
@@ -37,12 +37,7 @@ const Header = () => {
                     <p className='text-white ml-2'>{userdata.name}</p>
                 </div>
                 <div>
-                    <button
-                        className='px-4 py-2 bg-slate-500 rounded-2xl text-white hover:bg-slate-700'
-                        onClick={logoutHandler}
-                    >
-                        LOGOUT
-                    </button>
+                    <Logout />
                 </div>
             </div>
         </div>
