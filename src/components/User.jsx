@@ -27,8 +27,8 @@ const User = () => {
 
     const getMessages = async () => {
         let data = await dataBaseService.getMessages(offset);
-        if(data.documents.length == 500){
-            const ofset = offset + 500
+        if(data.documents.length == 5000){
+            const ofset = offset + 5000
             setOffset(ofset);
             data = data = await dataBaseService.getMessages(ofset)
         }

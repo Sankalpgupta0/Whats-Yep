@@ -15,7 +15,6 @@ const Signup = () => {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const [validName, setValidName] = useState(false)
-    const [avatar, setAvatar] = useState("");
 
     const signupbtn = async (e) => {
         let user;
