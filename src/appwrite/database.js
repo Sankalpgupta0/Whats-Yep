@@ -75,33 +75,6 @@ export class DataBaseService{
     }
 
 
-    // async deleteMessage(slug){
-    //     try {
-    //         await this.databases.deleteDocument(
-    //             envImport.appwriteDatabaseId,
-    //             envImport.appwriteCollectionId1,
-    //             slug
-    //         )
-    //         return true
-    //     } catch (error) {
-    //         console.log("Appwrite serive :: deletePost :: error", error);
-    //         return false
-    //     }
-    // }
-
-    // async getMessage(slug){
-    //     try {
-    //         return await this.databases.getDocument(
-    //             envImport.appwriteDatabaseId,
-    //             envImport.appwriteCollectionId1,
-    //             slug          
-    //         )
-    //     } catch (error) {
-    //         console.log("Appwrite serive :: getMessage :: error", error);
-    //         return false
-    //     }
-    // }
-
     async getMessages(offset){
         try {
             return await this.databases.listDocuments(

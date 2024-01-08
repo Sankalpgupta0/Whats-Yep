@@ -2,8 +2,6 @@ import React from 'react'
 import Header from './Header.jsx'
 import Input from './Input.jsx'
 import { Outlet } from 'react-router-dom'
-import Massages from './Massages.jsx'
-import Home from './Home.jsx'
 
 const MainLayout = () => {
   return (

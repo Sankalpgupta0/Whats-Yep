@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import {logout} from '../../store+slice/authSlice.js'
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from 'react-router-dom'
 import authService from '../../appwrite/auth.js';
-import Logout from './Logout/logout.jsx'
 import { Link } from 'react-router-dom';
+import Logout from './Logout/Logout.jsx'
 
 const Header = () => {
 
     const [userdata, setUserdata] = useState([])
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-
-    const logoutHandler = () => {
-        dispatch(logout());
-        navigate('/login')
-    }
 
     useEffect(() => {
         userInfo()

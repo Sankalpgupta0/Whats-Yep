@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Chat from './Chat.jsx';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import dataBaseService from '../../appwrite/database.js';
 import authService from '../../appwrite/auth.js';
 
