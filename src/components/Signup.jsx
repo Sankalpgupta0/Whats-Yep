@@ -38,8 +38,7 @@ const Signup = () => {
     // TODO: username
     useEffect(() => {
         SelectUserName();
-    }
-    , [username])
+    })
 
     const SelectUserName = async() => {
         try {
@@ -116,18 +115,6 @@ const Signup = () => {
                         placeholder="Enter your password :"
                         className="h-12 w-full px-5 rounded-md my-1"
                     />
-
-                    {/* <input 
-                    type="file"  
-                    id="avatar" 
-                    className="hidden"
-                    accept="image/png, image/jpg, image/jpeg"
-                    />
-                    <label htmlFor="avatar" className=" cursor-pointer flex items-center justify-center">
-                        <img src={avatar} alt="" />
-                        <img src="../../src/images/addAvatar.png" className="h-12" />
-                        <p>Add Avatar</p>
-                    </label> */}
 
                     <button
                         className="bg-blue-600 w-full my-3 py-2 rounded-lg text-white text-center hover:bg-blue-800"

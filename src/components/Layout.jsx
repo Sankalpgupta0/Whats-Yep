@@ -1,6 +1,5 @@
 import SideBarLayout from "./sideBar/SideBarLayout"
 import MainLayout from "./main/MainLayout"
-import { Outlet } from "react-router-dom"
 
 
 function App() {
