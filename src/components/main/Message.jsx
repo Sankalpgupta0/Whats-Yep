@@ -16,7 +16,6 @@ const Message = ({message, userId="", owner=false, Time, userTo}) => {
 
     const userInfo = async() => {
         const users = await dataBaseService.getUser(userId);
-        console.log(users);
         setUserdata(users)
     }
 
