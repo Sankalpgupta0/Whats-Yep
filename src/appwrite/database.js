@@ -52,7 +52,7 @@ export class DataBaseService{
                 id          
             )
         } catch (error) {
-            console.log("Appwrite serive :: getMessage :: error", error);
+            console.log("Appwrite serive :: getUser :: error", error);
             return false
         }
     }

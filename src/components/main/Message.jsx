@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import authService from "../../appwrite/auth";
 import dataBaseService from "../../appwrite/database";
 
-const Message = ({message, userId, owner=false, Time, userTo}) => {
+const Message = ({message, userId="", owner=false, Time, userTo}) => {
 
     const [userdata, setUserdata] = useState([])
 
@@ -16,6 +16,7 @@ const Message = ({message, userId, owner=false, Time, userTo}) => {
 
     const userInfo = async() => {
         const users = await dataBaseService.getUser(userId);
+        console.log(users);
         setUserdata(users)
     }
 

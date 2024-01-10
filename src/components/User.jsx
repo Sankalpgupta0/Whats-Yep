@@ -3,24 +3,26 @@ import { useParams } from 'react-router-dom'
 import authService from '../appwrite/auth';
 import dataBaseService from '../appwrite/database';
 import Message from './main/Message';
+import { useSelector } from 'react-redux';
 
 const User = () => {
     const [offset, setOffset] = useState(0)
     const {id} = useParams();
     const [loader, setLoader] = useState(true)
     let [messages, setMessages] = useState([]);
+    const [count, setCount] = useState(0);
+
+    const counts = useSelector((state) => state.AuthReducer.count)
 
     const [CurrentUserId, setCurrentUserId] = useState("");
 
     useEffect(() => {
         getMessages();
-        // userInfo();
         getCurrentUser();
-    },[messages])
+    },[counts, count])
 
     const getCurrentUser = async () => {
         const CurrentUser = await authService.getCurrentUser();
-        // console.log(CurrentUser);
         setCurrentUserId(CurrentUser.$id)
     }
 
@@ -45,13 +47,13 @@ const User = () => {
                         if(message.userId == CurrentUserId ){
                             return (
                                 <div key={message.$id}>
-                                    <Message message={message.message} owner/>
+                                    <Message message={message.message} userId={message.userId} owner/>
                                 </div>
                             )
                         } else if (message.userTo == id) {
                             return (
                                 <div key={message.$id}>
-                                    <Message message={message.message}  />
+                                    <Message message={message.message} userId={message.userId}  />
                                 </div>
                             )
                         }

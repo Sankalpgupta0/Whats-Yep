@@ -12,7 +12,7 @@ const Header = () => {
   
   useEffect(() => {
     getUsername();
-  },[])
+  })
 
   const getUsername = async() => {
     if(id){

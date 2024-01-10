@@ -51,6 +51,7 @@ const Chats = () => {
       {
         users ? (
           users.map((user) => {
+            // console.log(user);
             if (user.ID !== CurrentUserId){
               return (
                 <div key={user.ID}>
