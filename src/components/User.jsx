@@ -17,6 +17,7 @@ const User = () => {
     const [CurrentUserId, setCurrentUserId] = useState("");
 
     useEffect(() => {
+        setCount(counts)
         getMessages();
         getCurrentUser();
     },[counts, count])
