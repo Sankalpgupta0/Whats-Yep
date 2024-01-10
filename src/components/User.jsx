@@ -61,13 +61,13 @@ const User = () => {
                         if(message.userId == id){
                             return (
                                 <div key={message.$id}>
-                                    <Message message={message.message} />
+                                    <Message message={message.message} userId={message.userId}/>
                                 </div>
                             )
                         } else if (message.userTo == CurrentUserId) {
                             return (
                                 <div key={message.$id}>
-                                    <Message message={message.message} owner />
+                                    <Message message={message.message} owner userId={message.userId}/>
                                 </div>
                             )
                         }
