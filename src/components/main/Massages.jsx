@@ -45,6 +45,7 @@ const Massages = () => {
             <div className='w-full h-4/5 overflow-scroll overflow-x-hidden'>
                 {
                     messages.map((message) => {
+                        console.log(message);
                         if (message.userTo == 1){
                             if (message.userId === userdata.$id) {
                                 return (

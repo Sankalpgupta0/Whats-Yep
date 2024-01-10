@@ -15,7 +15,7 @@ const Chats = () => {
   useEffect(() => {
     getUsers();
     getCurrentUser();
-  })
+  },[])
 
   const getCurrentUser = async () => {
     const CurrentUser = await authService.getCurrentUser();
