@@ -1,6 +1,3 @@
-import SideBarLayout from "./components/sideBar/SideBarLayout"
-import MainLayout from "./components/main/MainLayout"
-import Signup from "./components/Signup"
 import { Outlet } from "react-router-dom"
 
 

@@ -13,7 +13,7 @@ export class DataBaseService{
     }
 
     //  for users
-    async createUserDatabase(userId, Name, userPassword, userName){
+    async createUserDatabase(userId, Name, userPassword, userName, image){
         try{
             return await this.databases.createDocument(
                 envImport.appwriteDatabaseId,
@@ -24,6 +24,7 @@ export class DataBaseService{
                     ID: userId,
                     password: userPassword,
                     username: userName,
+                    avatar: image
                 }
             )
         } catch(error){

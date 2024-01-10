@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import authService from '../../appwrite/auth.js';
 import { Link } from 'react-router-dom';
 import Logout from './Logout/Logout.jsx'
+import dataBaseService from '../../appwrite/database.js';
+import Avatar from '../Avatar.jsx';
+import storageService from '../../appwrite/storage.js';
 
 const Header = () => {
 
@@ -12,8 +15,11 @@ const Header = () => {
     },[])
 
     const userInfo = async() => {
-        const user = await authService.getCurrentUser();
-        setUserdata(user);
+        const users = await authService.getCurrentUser();
+        if (users !== null) {
+            const user = await dataBaseService.getUser(users.$id);
+            setUserdata(user);
+        }
     }
 
 
@@ -26,7 +32,7 @@ const Header = () => {
             </div>
             <div className='flex '>
                 <div className='mr-10 flex items-center'>
-                    <img src="https://imgs.search.brave.com/KbAjSqAcd2-s7mAlmxWrEj-ge7W7F3xI7acc9aLJv8k/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA2LzIyLzcxLzI0/LzM2MF9GXzYyMjcx/MjQ0NF9VRjZEOTNw/aUVTNVc0dkJnbjBL/RndVeGVyZGFpdXpa/cC5qcGc" alt="" className='bg-yellow-500 h-10 w-10 rounded-full object-cover' />
+                    <Avatar image={storageService.getFilePreview(userdata.avatar)} fallback={userdata.name}/>
                     <p className='text-white ml-2'>{userdata.name}</p>
                 </div>
                 <div>

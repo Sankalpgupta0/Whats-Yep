@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../store+slice/authSlice.js";
 import dataBaseService from "../appwrite/database.js";
+import storageService from "../appwrite/storage.js";
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -15,20 +16,37 @@ const Signup = () => {
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const [validName, setValidName] = useState(false)
+    const [image, setImage] = useState(null);
 
     const signupbtn = async (e) => {
         let user;
         if (name.trim() === "" || email.trim() == "" || password.trim() == "" || username.trim() == "") {
             return alert("Enter All Credential");
         } else {
-            user = await authService.createAccount({ email, password, name });
-            if (user) {
-                const userData = await authService.getCurrentUser();
-                await dataBaseService.createUserDatabase(user.userId, name, password, username)
-                if (userData) {
-                    dispatch(login(userData));
+            if (image != null) {
+                const file = await storageService.uploadFile(image);
+                if (file) {
+                    const fileId = file.$id;
+                    user = await authService.createAccount({ email, password, name });
+                    if (user) {
+                        const userData = await authService.getCurrentUser();
+                        await dataBaseService.createUserDatabase(user.userId, name, password, username, fileId)
+                        if (userData) {
+                            dispatch(login(userData));
+                        }
+                        navigate("/users");
+                    }
                 }
-                navigate("/users");
+            } else {
+                user = await authService.createAccount({ email, password, name });
+                if (user) {
+                    const userData = await authService.getCurrentUser();
+                    await dataBaseService.createUserDatabase(user.userId, name, password, username, null)
+                    if (userData) {
+                        dispatch(login(userData));
+                    }
+                    navigate("/users");
+                }
             }
             // TODO: add avatar feature
         }
@@ -39,19 +57,19 @@ const Signup = () => {
         SelectUserName();
     })
 
-    const SelectUserName = async() => {
+    const SelectUserName = async () => {
         try {
             const users = await dataBaseService.getAllUsers();
 
             (users.documents).map((user) => {
-                if((username).toLowerCase() == (user.username).toLowerCase()){
+                if ((username).toLowerCase() == (user.username).toLowerCase()) {
                     setValidName(false)
                 } else {
                     setValidName(true)
                 }
             })
         } catch (error) {
-            console.log("Error in SelectUserName :: " +  error);
+            console.log("Error in SelectUserName :: " + error);
         }
     }
 
@@ -86,7 +104,7 @@ const Signup = () => {
                         className="h-12 w-full px-5 rounded-md my-1"
                     />
 
-                    {   
+                    {
                         username.length != 0 ? (
                             validName ? <p className="text-green-500 text-center">
                                 Username is valid
@@ -94,7 +112,7 @@ const Signup = () => {
                                 username is taken
                             </p>
                         )
-                        : null
+                            : null
                     }
 
                     <input
@@ -115,9 +133,24 @@ const Signup = () => {
                         className="h-12 w-full px-5 rounded-md my-1"
                     />
 
+                    <label
+                        className=" text-[15px] text-violet11 flex justify-center  items-center cursor-pointer" htmlFor="uploadImage"
+                    >
+                        <img src="../../src/images/addAvatar.png" alt="" className='h-10 ' />
+                        <h1>Add Avatar</h1>
+                    </label>
+                    <input
+                        className="hidden"
+                        id="uploadImage"
+                        placeholder='uploadImage'
+                        type="file"
+                        accept="image/png, image/jpg, image/jpeg, image/gif"
+                        onChange={(e) => setImage(e.target.files[0])}
+                    />
+
                     <button
                         className="bg-blue-600 w-full my-3 py-2 rounded-lg text-white text-center hover:bg-blue-800"
-                        disabled = {!validName}
+                        disabled={!validName}
                         onClick={signupbtn}
                     >
                         Create Account

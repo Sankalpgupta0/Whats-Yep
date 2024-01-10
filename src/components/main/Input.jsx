@@ -3,6 +3,7 @@ import dataBaseService from '../../appwrite/database.js'
 import { useDispatch } from 'react-redux';
 import authService from '../../appwrite/auth.js';
 import { useParams } from 'react-router-dom';
+import { counter } from '../../store+slice/authSlice.js';
 
 const Input = () => {
     const [message,setMessage] = useState('');
@@ -21,6 +22,7 @@ const Input = () => {
     }
 
     const sendBtn = async() => {
+        dispatch(counter())
         let status
         if(message.trim() == ""){
             console.log("type something");

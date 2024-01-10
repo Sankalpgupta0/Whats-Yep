@@ -30,7 +30,7 @@ const Chats = () => {
   return (
     <>
       <div
-        className=' h-20 w-full hover:bg-slate-800 border-white border-b flex items-center px-5'
+        className=' overflow-y-scroll h-20 w-full hover:bg-slate-800 border-white border-b flex items-center px-5'
         onClick={(e) => {
           navigate("/users/WorldChat")
           window.location.reload();
@@ -56,7 +56,7 @@ const Chats = () => {
           if (user.ID !== CurrentUserId){
             return (
               <div key={user.ID}>
-                <Chat Name={user.name} userName={user.username} userId={user.ID}/>
+                <Chat Name={user.name} userName={user.username} userId={user.ID} profilePic={user.avatar}/>
               </div>
             )
           }
