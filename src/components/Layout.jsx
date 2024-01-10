@@ -8,10 +8,12 @@ function App() {
         <>
             <div className="h-screen w-screen bg-black flex justify-center items-center">
                 <div className="w-full h-full bg-slate-800 flex rounded-xl overflow-hidden">
-                    <div className="w-1/3 h-full max-sm:hidden">
-                    <SideBarLayout />
+                    <div className="w-1/3 h-full max-sm:w-0">
+                        <SideBarLayout />
                     </div>
-                    <MainLayout />
+                    <div className="w-2/3 h-full max-sm:w-full">
+                        <MainLayout />
+                    </div>
                 </div>
             </div>
         </>

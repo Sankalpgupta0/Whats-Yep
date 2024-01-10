@@ -20,7 +20,7 @@ const Message = ({message, userId="", owner=false, Time, userTo}) => {
     }
 
     return (
-        <div className={`max-sm:w-3/4 w-2/3 m-3 flex box-content ${owner ? "flex-row-reverse ml-72 max-lg:ml-32 " : ""}`}>
+        <div className={`max-sm:w-3/4 w-2/3 m-3 flex box-content ${owner ? "flex-row-reverse ml-64 max-lg:ml-32 max-sm:ml-24" : ""}`}>
             <div>
                 <Avatar image={storageService.getFilePreview(userdata.avatar)} fallback={userdata.name}/>
                 <p className="text-xs  text-slate-300">{Time}</p>

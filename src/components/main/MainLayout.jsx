@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 
 const MainLayout = () => {
   return (
-    <div className='max-sm:w-full w-2/3 h-full bg-slate-500 relative overflow-y-scroll overflow-x-hidden'>
+    <div className='h-full w-full bg-slate-500 relative overflow-y-scroll overflow-x-hidden'>
       <Header />
       <Outlet />
       <Input />

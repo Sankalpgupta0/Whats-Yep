@@ -18,7 +18,7 @@ const AlertDialogDemo = () => {
 
     <AlertDialog.Root>
         <AlertDialog.Trigger asChild>
-            <button className="Button violet">Logout</button>
+            <button className="Button violet ">Logout</button>
         </AlertDialog.Trigger>
         <AlertDialog.Portal>
             <AlertDialog.Overlay className="AlertDialogOverlay" />
