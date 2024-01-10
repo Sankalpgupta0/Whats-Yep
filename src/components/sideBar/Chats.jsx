@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Chat from './Chat.jsx';
-import { useDispatch } from 'react-redux';
 import dataBaseService from '../../appwrite/database.js';
 import authService from '../../appwrite/auth.js';
 
@@ -10,7 +9,6 @@ const Chats = () => {
   const [users, setUsers] = useState([])
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     getUsers();
@@ -51,17 +49,23 @@ const Chats = () => {
       </div>
 
       {
-        users.map((user) => {
-          // console.log(user);
-          if (user.ID !== CurrentUserId){
-            return (
-              <div key={user.ID}>
-                <Chat Name={user.name} userName={user.username} userId={user.ID} profilePic={user.avatar}/>
-              </div>
-            )
-          }
+        users ? (
+          users.map((user) => {
+            // console.log(user);
+            // if(user == undefined){
+            //   window.location.reload();
+            // }
+            if (user.ID !== CurrentUserId){
+              return (
+                <div key={user.ID}>
+                  <Chat Name={user.name} userName={user.username} userId={user.ID} profilePic={user.avatar}/>
+                </div>
+              )
+            }
+  
+          })
 
-        })
+        ) : null
       }
     </>
   )
