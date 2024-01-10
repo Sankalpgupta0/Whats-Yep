@@ -17,7 +17,6 @@ const Massages = () => {
         setCount(counts)
         getMessages();
         userInfo();
-        console.log("hi");
 
     },[counts, count])
 
