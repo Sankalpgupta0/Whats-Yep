@@ -30,7 +30,7 @@ const Header = () => {
         <div className={`max-sm:h-40 h-20 w-full flex justify-between items-center p-5  ${!isDarktheme ? "bg-slate-200" : "bg-[#202C33]"}`}>
             <div>
                 <Link to="/users">
-                    <p className={` ${!isDarktheme ? "text-black" : "text-white"}`}>What's Yep👍</p>
+                    <p className={` ${!isDarktheme ? "text-black" : "text-white"}`}>ConvoHub</p>
                 </Link>
             </div>
             <div className='flex '>
