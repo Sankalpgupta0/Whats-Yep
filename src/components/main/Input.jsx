@@ -86,7 +86,6 @@ const Input = () => {
                     accept=".jpg,.jpeg,.png"
                     onChange={(e) => {
                         setImage(e.target.files[0])
-                        
                     }}
                 />
                 <label htmlFor="image" onKeyDown={(e) => {

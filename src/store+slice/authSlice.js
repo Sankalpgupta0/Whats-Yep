@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     status: false,
     userData: null,
-    count:0
+    count: 0
 }
 
 const authSlice = createSlice({
@@ -20,8 +20,7 @@ const authSlice = createSlice({
         },
         counter : (state) => {
             state.count++;
-            console.log(state.count);
-        }
+                }
     }
 })
 

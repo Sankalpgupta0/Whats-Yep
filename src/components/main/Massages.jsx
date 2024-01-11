@@ -15,7 +15,7 @@ const Massages = () => {
     const isDarktheme = useSelector((state) => state.ThemeReducer.isDarktheme)
     
     useEffect(() => {
-        setCount(counts)
+        setCount(counts);
         getMessages();
         userInfo();
 
