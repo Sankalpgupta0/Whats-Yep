@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bgForChatsLight{
+    background-image: url("https://t4.ftcdn.net/jpg/01/95/42/21/360_F_195422106_cNzNOmCmgf0QbxDVfuOoEc2zEl0gYIL0.jpg");
+}
+.bgForChatsDark{
+    background-image: url("https://i.pinimg.com/736x/85/ec/df/85ecdf1c3611ecc9b7fa85282d9526e0.jpg");
+}

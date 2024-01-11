@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import authService from '../../appwrite/auth.js';
 import { useParams } from 'react-router-dom';
 import { counter } from '../../store+slice/authSlice.js';
+import { useSelector } from 'react-redux';
 
 const Input = () => {
     const [message,setMessage] = useState('');
@@ -11,6 +12,8 @@ const Input = () => {
     const {id} = useParams();
 
     const [userdata, setUserdata] = useState([])
+
+    const isDarktheme = useSelector((state) => state.ThemeReducer.isDarktheme);
 
     useEffect(() => {
         userInfo()
@@ -43,7 +46,7 @@ const Input = () => {
     }
 
 return (
-    <div className='h-20 w-full sticky bottom-0 bg-slate-200 flex items-center px-5' 
+    <div className={`h-20 w-full sticky bottom-0 ${!isDarktheme? "bg-slate-200" : "bg-slate-900" } flex items-center px-5 `}
     onKeyDown={(e) => {
         if(e.key == 'Enter')
             sendBtn();

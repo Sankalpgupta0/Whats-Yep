@@ -16,6 +16,8 @@ const User = () => {
 
     const [CurrentUserId, setCurrentUserId] = useState("");
 
+    const isDarktheme = useSelector((state) => state.ThemeReducer.isDarktheme)
+
     useEffect(() => {
         setCount(counts)
         getMessages();
@@ -41,7 +43,7 @@ const User = () => {
 
     return (
         !loader?
-        <div className='w-full h-4/5 overflow-scroll'>
+        <div className={`w-full h-4/5 overflow-scroll ${!isDarktheme? "bgForChatsLight" : "bgForChatsDark"}`}>
             {
                 messages.map((message) => {
                     if (message.userId === CurrentUserId && message.userTo == id) {

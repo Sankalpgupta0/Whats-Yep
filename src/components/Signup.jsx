@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../store+slice/authSlice.js";
 import dataBaseService from "../appwrite/database.js";
 import storageService from "../appwrite/storage.js";
+import { RxAvatar } from "react-icons/rx";
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -136,7 +137,7 @@ const Signup = () => {
                     <label
                         className=" text-[15px] text-violet11 flex justify-center  items-center cursor-pointer" htmlFor="uploadImage"
                     >
-                        <img src="../../src/images/addAvatar.png" alt="" className='h-10 ' />
+                        <img src="../../../src/images/addAvatar.png" alt="" className='h-10 ' />
                         <h1>Add Avatar</h1>
                     </label>
                     <input

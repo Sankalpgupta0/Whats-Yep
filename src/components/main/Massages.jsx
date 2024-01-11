@@ -12,6 +12,7 @@ const Massages = () => {
     const [count, setCount] = useState(0);
 
     const counts = useSelector((state) => state.AuthReducer.count)
+    const isDarktheme = useSelector((state) => state.ThemeReducer.isDarktheme)
     
     useEffect(() => {
         setCount(counts)
@@ -40,7 +41,7 @@ const Massages = () => {
 
     return (
         !loader ?
-            <div className='w-full h-4/5 overflow-scroll overflow-x-hidden'>
+            <div className={`w-full h-4/5 overflow-scroll overflow-x-hidden ${!isDarktheme? "bgForChatsLight" : "bgForChatsDark"}`}>
                 {
                     messages.map((message) => {
                         if (message.userTo == 1){
