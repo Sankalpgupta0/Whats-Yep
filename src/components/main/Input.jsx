@@ -31,24 +31,28 @@ const Input = () => {
     const sendBtn = async () => {
         dispatch(counter())
         let status
-
-        if (image != null) {
-            const file = await storageService.uploadFile(image)
-            if (file) {
-                const fileId = file.$id
-                if (id == undefined) {
-                    status = await dataBaseService.createMessage(message, userdata.$id, "1", fileId);
+        if(message.trim() == "" && image == "") {
+            console.log("type sommething");
+        } else {
+            if (image != null) {
+                const file = await storageService.uploadFile(image)
+                if (file) {
+                    const fileId = file.$id
+                    if (id == undefined) {
+                        status = await dataBaseService.createMessage(message, userdata.$id, "1", fileId);
+                    } else {
+                        status = await dataBaseService.createMessage(message, userdata.$id, id, fileId);
+                    }
                 } else {
-                    status = await dataBaseService.createMessage(message, userdata.$id, id, fileId);
-                }
-            } else {
-                if (id == undefined) {
-                    status = await dataBaseService.createMessage(message, userdata.$id, "1", null);
-                } else {
-                    status = await dataBaseService.createMessage(message, userdata.$id, id, null);
+                    if (id == undefined) {
+                        status = await dataBaseService.createMessage(message, userdata.$id, "1", null);
+                    } else {
+                        status = await dataBaseService.createMessage(message, userdata.$id, id, null);
+                    }
                 }
             }
         }
+
         if (status) {
             console.log(status);
             setMessage("")
