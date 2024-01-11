@@ -55,7 +55,8 @@ const Input = () => {
 
         if (status) {
             console.log(status);
-            setMessage("")
+            setMessage("");
+            setImage("")
         }
         else
             console.log("not done");
