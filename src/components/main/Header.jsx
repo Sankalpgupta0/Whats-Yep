@@ -35,18 +35,18 @@ const Header = () => {
   return (
     <div className='h-20 w-full bg-slate-800 px-10 justify-between flex items-center sticky top-0 z-10'>
         <div>
-            <h1 className='text-xl text-white'>Chatting with {username ? username : "world"}</h1>
+            <h1 className='text-xl text-white w-full max-sm:text-sm'>Chatting with {username ? username : "world"}</h1>
         </div>
         <div className='flex h-8 w-32 items-center text-white mr-36'>
-            < IoVideocamOutline className="text-5xl cursor-pointer" />
-            < IoIosMore className="text-3xl mx-5 cursor-pointer" />
+            < IoVideocamOutline className="text-5xl cursor-pointer max-sm:hidden " />
+            < IoIosMore className="text-3xl mx-5 cursor-pointer max-sm:hidden " />
             <button
             onClick={() => {
               navigate("/Chats");
-              window.location.reload();
+              // window.location.reload();
             }}
             >
-              <img src="../../../src/images/bars.png" alt="Chats" className='h-8 m-1 cursor-pointer sm:hidden'/>
+              <img src="../../../src/images/bars.png" alt="Chats" className='h-8 m-1 cursor-pointer sm:hidden absolute right-36 bottom-5 max-sm:right-16'/>
             </button>
 
             <button
@@ -54,7 +54,7 @@ const Header = () => {
               e.preventDefault();
               dispatch(toggleTheme());
             }}
-            className='ml-5 text-3xl'
+            className='ml-5 text-3xl absolute right-5'
             >
               {
                 isDarktheme? <MdDarkMode /> : <MdOutlineDarkMode />
