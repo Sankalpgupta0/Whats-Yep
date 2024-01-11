@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { toggleTheme } from '../../store+slice/theme';
 import { IoVideocamOutline } from "react-icons/io5";
 import { IoIosMore } from "react-icons/io";
+import { BsChatSquareDotsFill } from "react-icons/bs";
 
 const Header = () => {
   const [username, setUsername] = useState("")
@@ -46,7 +47,7 @@ const Header = () => {
               // window.location.reload();
             }}
             >
-              <img src="../../../src/images/bars.png" alt="Chats" className='h-8 m-1 cursor-pointer sm:hidden absolute right-36 bottom-5 max-sm:right-16'/>
+              < BsChatSquareDotsFill className='text-3xl m-1 cursor-pointer sm:hidden absolute right-36 bottom-5 max-sm:right-16'/>
             </button>
 
             <button
