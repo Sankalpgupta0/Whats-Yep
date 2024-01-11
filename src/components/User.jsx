@@ -10,7 +10,6 @@ const User = () => {
     const {id} = useParams();
     const [loader, setLoader] = useState(true)
     let [messages, setMessages] = useState([]);
-    const [count, setCount] = useState(0);
 
     const counts = useSelector((state) => state.AuthReducer.count)
 
@@ -19,10 +18,9 @@ const User = () => {
     const isDarktheme = useSelector((state) => state.ThemeReducer.isDarktheme)
 
     useEffect(() => {
-        setCount(counts)
         getMessages();
         getCurrentUser();
-    },[counts, count])
+    })
 
     const getCurrentUser = async () => {
         const CurrentUser = await authService.getCurrentUser();
