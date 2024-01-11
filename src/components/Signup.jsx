@@ -76,8 +76,17 @@ const Signup = () => {
 
 
     return (
-        <div className="h-screen w-screen flex justify-center items-center">
-            <div className="sm:w-1/2 bg-slate-100 px-10 rounded-xl w-full">
+        <div 
+        className="h-screen w-screen flex justify-center items-center"
+        onKeyDown={(e) => {
+            if(e.key == 'Enter')
+            signupbtn();
+        }}
+        >
+            <div 
+            className="sm:w-1/2 bg-slate-100 px-10 rounded-xl w-full"
+            
+            >
                 <div className="mx-auto ">
                     <h1 className="text-xl font-bold text-center shadow-lg">
                         Sign up to create account

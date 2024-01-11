@@ -32,8 +32,17 @@ const Login = () => {
     };
 
     return (
-        <div className="h-screen w-screen flex justify-center items-center my-4">
-            <div className="sm:w-1/2 bg-slate-100 px-10 rounded-xl w-full">
+        <div 
+        className="h-screen w-screen flex justify-center items-center my-4"
+        onKeyDown={(e) => {
+            if(e.key == 'Enter')
+            loginBtn();
+        }}
+        >
+            <div 
+            className="sm:w-1/2 bg-slate-100 px-10 rounded-xl w-full"
+            
+            >
                 <div className="mx-auto ">
                     <h1 className="text-xl font-bold text-center shadow-lg">
                         Sign in to your account
