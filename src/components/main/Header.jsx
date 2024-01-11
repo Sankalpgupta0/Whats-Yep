@@ -10,9 +10,12 @@ import { toggleTheme } from '../../store+slice/theme';
 import { IoVideocamOutline } from "react-icons/io5";
 import { IoIosMore } from "react-icons/io";
 import { BsChatSquareDotsFill } from "react-icons/bs";
+import Avatar from '../Avatar';
+import storageService from '../../appwrite/storage';
 
 const Header = () => {
   const [username, setUsername] = useState("")
+  const [avatar, setAvatar] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch()
@@ -29,6 +32,7 @@ const Header = () => {
     if(id){
       const user = await dataBaseService.getUser(id);
       setUsername(user.name);
+      setAvatar(user.avatar)
     }
   }
   
@@ -36,7 +40,9 @@ const Header = () => {
   return (
     <div className='h-20 w-full bg-slate-800 px-10 justify-between flex items-center sticky top-0 z-10'>
         <div>
-            <h1 className='text-xl text-white w-full max-sm:text-sm'>Chatting with {username ? username : "world"}</h1>
+            <h1 className='text-xl text-white w-full max-sm:text-sm flex items-center'>
+              <Avatar image={storageService.getFilePreview(avatar)}/>
+              Chatting with {username ? username : "world"}</h1>
         </div>
         <div className='flex h-8 w-32 items-center text-white mr-36'>
             < IoVideocamOutline className="text-5xl cursor-pointer max-sm:hidden " />
