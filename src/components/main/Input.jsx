@@ -14,6 +14,7 @@ const Input = () => {
     const [userdata, setUserdata] = useState([])
 
     const isDarktheme = useSelector((state) => state.ThemeReducer.isDarktheme);
+    
 
     useEffect(() => {
         userInfo()
@@ -55,7 +56,7 @@ return (
         <input 
         type="text" 
         placeholder='Type something' 
-        className='bg-transparent outline-none text-xl w-3/4 h-full'
+        className={`bg-transparent outline-none text-xl w-3/4 h-full  ${!isDarktheme? "text-black" : "text-white" } `}
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         />
