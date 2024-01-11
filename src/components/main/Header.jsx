@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import { MdOutlineDarkMode } from "react-icons/md";
 import { useDispatch } from 'react-redux';
 import { toggleTheme } from '../../store+slice/theme';
+import { IoVideocamOutline } from "react-icons/io5";
+import { IoIosMore } from "react-icons/io";
 
 const Header = () => {
   const [username, setUsername] = useState("")
@@ -36,9 +38,8 @@ const Header = () => {
             <h1 className='text-xl text-white'>Chatting with {username ? username : "world"}</h1>
         </div>
         <div className='flex h-8 w-32 items-center text-white mr-36'>
-            <img src='../../../src/images/cam.png' alt="cam" className='h-8 m-2 cursor-pointer max-lg:hidden'/>
-            <img src="../../../src/images/add.png" alt="add" className='h-8 m-2 cursor-pointer max-lg:hidden'/>
-            <img src="../../../src/images/more.png" alt="more" className='h-8 m-2 cursor-pointer max-lg:hidden'/>
+            < IoVideocamOutline className="text-5xl cursor-pointer" />
+            < IoIosMore className="text-3xl mx-5 cursor-pointer" />
             <button
             onClick={() => {
               navigate("/Chats");

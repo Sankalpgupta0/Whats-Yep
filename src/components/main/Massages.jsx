@@ -41,20 +41,21 @@ const Massages = () => {
 
     return (
         !loader ?
-            <div className={`w-full h-4/5 overflow-scroll overflow-x-hidden ${!isDarktheme? "bgForChatsLight" : "bgForChatsDark"}`}>
+            <div className={` relative w-full h-4/5 overflow-scroll overflow-x-hidden ${!isDarktheme? "bgForChatsLight" : "bgForChatsDark"}`}>
                 {
                     messages.map((message) => {
+                        // console.log(message);
                         if (message.userTo == 1){
                             if (message.userId === userdata.$id) {
                                 return (
                                     <div key={message.$id}>
-                                        <Message message={message.message} userId={message.userId} userTo={message.userTo} owner />
+                                        <Message message={message.message} userId={message.userId}  owner imageUrl={message.image}/>
                                     </div>
                                 )
                             } else{
                                 return (
                                     <div key={message.$id}>
-                                        <Message message={message.message} userTo={message.userTo} userId={message.userId}/>
+                                        <Message message={message.message} userId={message.userId} imageUrl={message.image}/>
                                     </div>
                                 )
                             }

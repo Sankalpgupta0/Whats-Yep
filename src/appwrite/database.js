@@ -58,7 +58,7 @@ export class DataBaseService{
     }
 
     // for messages
-    async createMessage(message,userId,userTo){
+    async createMessage(message,userId,userTo, image){
         try {
             return await this.databases.createDocument(
                 envImport.appwriteDatabaseId,
@@ -67,7 +67,8 @@ export class DataBaseService{
                 {
                     message,
                     userId,
-                    userTo
+                    userTo,
+                    image
                 }
             )
         } catch (error) {

@@ -46,33 +46,35 @@ const User = () => {
         <div className={`w-full h-4/5 overflow-scroll ${!isDarktheme? "bgForChatsLight" : "bgForChatsDark"}`}>
             {
                 messages.map((message) => {
-                    if (message.userId === CurrentUserId && message.userTo == id) {
-                        if(message.userId == CurrentUserId ){
-                            return (
-                                <div key={message.$id}>
-                                    <Message message={message.message} userId={message.userId} owner/>
-                                </div>
-                            )
-                        } else if (message.userTo == id) {
-                            return (
-                                <div key={message.$id}>
-                                    <Message message={message.message} userId={message.userId}  />
-                                </div>
-                            )
-                        }
-                    } else if(message.userId === id && message.userTo == CurrentUserId){
-                        if(message.userId == id){
-                            return (
-                                <div key={message.$id}>
-                                    <Message message={message.message} userId={message.userId}/>
-                                </div>
-                            )
-                        } else if (message.userTo == CurrentUserId) {
-                            return (
-                                <div key={message.$id}>
-                                    <Message message={message.message} owner userId={message.userId}/>
-                                </div>
-                            )
+                    if((message.message).trim() != ""){
+                        if (message.userId === CurrentUserId && message.userTo == id) {
+                            if(message.userId == CurrentUserId ){
+                                return (
+                                    <div key={message.$id}>
+                                        <Message message={message.message} userId={message.userId} owner imageUrl={message.image}/>
+                                    </div>
+                                )
+                            } else if (message.userTo == id) {
+                                return (
+                                    <div key={message.$id}>
+                                        <Message message={message.message} userId={message.userId} imageUrl={message.image} />
+                                    </div>
+                                )
+                            }
+                        } else if(message.userId === id && message.userTo == CurrentUserId){
+                            if(message.userId == id){
+                                return (
+                                    <div key={message.$id}>
+                                        <Message message={message.message} userId={message.userId} imageUrl={message.image}/>
+                                    </div>
+                                )
+                            } else if (message.userTo == CurrentUserId) {
+                                return (
+                                    <div key={message.$id}>
+                                        <Message message={message.message} owner userId={message.userId} imageUrl={message.image}/>
+                                    </div>
+                                )
+                            }
                         }
                     }
                 })
