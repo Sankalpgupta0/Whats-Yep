@@ -20,6 +20,7 @@ const authSlice = createSlice({
         },
         counter : (state) => {
             state.count++;
+            console.log(state.count);
         }
     }
 })

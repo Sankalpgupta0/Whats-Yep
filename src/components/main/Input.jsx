@@ -84,11 +84,16 @@ const Input = () => {
                     id='image'
                     className=' hidden'
                     accept=".jpg,.jpeg,.png"
-                    onChange={(e) => setImage(e.target.files[0])}
+                    onChange={(e) => {
+                        setImage(e.target.files[0])
+                        
+                    }}
                 />
                 <label htmlFor="image" onKeyDown={(e) => {
-                    if (e.key == 'Enter')
+                    if (e.key == 'Enter'){
                         sendBtn();
+                        dispatch(counter())
+                    }
                 }}>
                     <IoImagesSharp className='mx-1 cursor-pointer text-3xl text-slate-400' />
                 </label>
