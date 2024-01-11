@@ -68,7 +68,7 @@ export class DataBaseService{
                     message,
                     userId,
                     userTo,
-                    image
+                    image,
                 }
             )
         } catch (error) {
