@@ -15,7 +15,6 @@ const Massages = () => {
     const isDarktheme = useSelector((state) => state.ThemeReducer.isDarktheme)
     
     useEffect(() => {
-        // setCount(counts);
         getMessages();
         userInfo();
 
@@ -47,13 +46,13 @@ const Massages = () => {
                         if (message.userTo == 1){
                             if (message.userId === userdata.$id) {
                                 return (
-                                    <div key={message.$id}>
+                                    <div>
                                         <Message message={message.message} userId={message.userId}  owner imageUrl={message.image}/>
                                     </div>
                                 )
                             } else{
                                 return (
-                                    <div key={message.$id}>
+                                    <div >
                                         <Message message={message.message} userId={message.userId} imageUrl={message.image}/>
                                     </div>
                                 )
