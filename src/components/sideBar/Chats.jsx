@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Chat from './Chat.jsx';
 import dataBaseService from '../../appwrite/database.js';
 import authService from '../../appwrite/auth.js';
+import Search from './Search.jsx';
 
 const Chats = () => {
   const [CurrentUserId, setCurrentUserId] = useState("");
@@ -47,21 +48,7 @@ const Chats = () => {
         Other Users ⤵️
       </div>
 
-      {
-        users ? (
-          users.map((user) => {
-            if (user.ID !== CurrentUserId){
-              return (
-                <div key={user.ID}>
-                  <Chat Name={user.name} userName={user.username} userId={user.ID} profilePic={user.avatar}/>
-                </div>
-              )
-            }
-  
-          })
-
-        ) : null
-      }
+      <Search />
     </>
   )
 }

@@ -25,6 +25,7 @@ const Header = () => {
 
 
   useEffect(() => {
+    console.log(id);
     getUsername();
   })
 
@@ -49,7 +50,7 @@ const Header = () => {
             }
 
             
-              Chatting with {username ? username : "world"}</h1>
+              Chatting with {id ? username : "world"}</h1>
         </div>
         <div className='flex h-8 w-32 items-center text-white mr-36'>
             < IoVideocamOutline className="text-5xl cursor-pointer max-sm:hidden " />

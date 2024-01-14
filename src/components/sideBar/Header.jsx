@@ -27,18 +27,18 @@ const Header = () => {
 
 
     return (
-        <div className={`max-sm:h-40 h-20 w-full flex justify-between items-center p-5  ${!isDarktheme ? "bg-slate-200" : "bg-[#202C33]"}`}>
+        <div className={`max-sm:h-40 max-lg:h-36 h-20 w-full flex justify-between items-center p-5  ${!isDarktheme ? "bg-slate-200" : "bg-[#202C33]"}`}>
             <div>
                 <Link to="/users">
                     <p className={` ${!isDarktheme ? "text-black" : "text-white"}`}>ConvoHub</p>
                 </Link>
             </div>
-            <div className='flex '>
+            <div className=' max-sm:flex lg:flex'>
                 <div className='mr-10 max-lg:mr-0 max-sm:mr-10 flex items-center'>
                     <Avatar image={storageService.getFilePreview(userdata.avatar)} fallback={userdata.name}/>
                     <p className={` ${!isDarktheme ? "text-black" : "text-white"} ml-2`}>{userdata.name}</p>
                 </div>
-                <div className=''>
+                <div className='max-lg:my-5'>
                     <Logout />
                 </div>
             </div>
