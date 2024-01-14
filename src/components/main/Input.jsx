@@ -31,9 +31,7 @@ const Input = () => {
     const sendBtn = async () => {
         dispatch(counter())
         let status
-        if(message.trim() == "" && image == "") {
-            console.log("type sommething");
-        } else {
+        if(message.trim() != "" || image != "") {
             if (image != null) {
                 const file = await storageService.uploadFile(image)
                 if (file) {

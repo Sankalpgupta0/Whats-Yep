@@ -44,7 +44,6 @@ const User = () => {
         <div className={`w-full h-4/5 overflow-scroll ${!isDarktheme? "bgForChatsLight" : "bgForChatsDark"}`}>
             {
                 messages.map((message) => {
-                    if((message.message).trim() != ""){
                         if (message.userId === CurrentUserId && message.userTo == id) {
                             if(message.userId == CurrentUserId ){
                                 return (
@@ -74,7 +73,6 @@ const User = () => {
                                 )
                             }
                         }
-                    }
                 })
             }
         </div> : <div> Loading... </div>

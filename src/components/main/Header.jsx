@@ -25,7 +25,6 @@ const Header = () => {
 
 
   useEffect(() => {
-    console.log(id);
     getUsername();
   })
 

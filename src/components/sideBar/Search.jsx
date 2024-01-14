@@ -42,7 +42,7 @@ const Search = () => {
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    className='bg-transparent h-full w-full px-3 text-white outline-none placeholder:text-white '
+                    className='bg-transparent h-full w-full px-3 text-white outline-none placeholder:text-white max-sm:text-center'
                     placeholder='🔎  Find a user'
 
                 />

@@ -44,7 +44,7 @@ const Chats = () => {
 
       </div>
 
-      <div className='w-full h-8 border-b  border-white text-white'>
+      <div className='w-full h-8 border-b  border-white text-white max-sm:text-center'>
         Other Users ⤵️
       </div>
 

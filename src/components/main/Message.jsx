@@ -29,7 +29,7 @@ const Message = ({message, userId="", owner=false, Time, imageUrl = ""}) => {
                 {imageUrl &&
                 <img
                     src={storageService.getFilePreview(imageUrl)}
-                    className={`rounded-lg w-1/3 max-sm:w-1/2 aspect-square mb-4`}
+                    className={`rounded-lg w-1/3 max-sm:w-1/2 mb-4 aspect-[1/1]`}
                 />
                 }
                 <p className="">
