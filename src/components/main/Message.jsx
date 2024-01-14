@@ -3,7 +3,6 @@ import { useState } from "react";
 import Avatar from "../Avatar";
 import storageService from "../../appwrite/storage";
 import { useEffect } from "react";
-import authService from "../../appwrite/auth";
 import dataBaseService from "../../appwrite/database";
 
 const Message = ({message, userId="", owner=false, Time, imageUrl = ""}) => {

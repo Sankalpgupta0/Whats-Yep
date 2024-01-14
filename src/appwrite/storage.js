@@ -24,20 +24,6 @@ export class StorageService{
             return false
         }
     }
-
-    async deleteFile(fileId){
-        try {
-            await this.storage.deleteFile(
-                envImport.appwriteBucketId,
-                fileId
-            )
-            return true
-        } catch (error) {
-            console.log("Appwrite serive :: deleteFile :: error", error);
-            return false
-        }
-    }
-
     getFilePreview(fileId){
         if(fileId){
             return this.storage.getFilePreview(

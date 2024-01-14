@@ -9,16 +9,16 @@ const Massages = () => {
     const [loader, setLoader] = useState(true)
     const [messages, setMessages] = useState([])
     const [userdata, setUserdata] = useState([])
-    const [count, setCount] = useState(0);
-
-    const counts = useSelector((state) => state.AuthReducer.count)
     const isDarktheme = useSelector((state) => state.ThemeReducer.isDarktheme)
     
     useEffect(() => {
         getMessages();
+    })
+    
+    useEffect(()=>{
         userInfo();
 
-    })
+    },[])
 
     const userInfo = async () => {
         const user = await authService.getCurrentUser();
@@ -27,7 +27,7 @@ const Massages = () => {
 
     const getMessages = async () => {
         let data = await dataBaseService.getMessages(offset);
-        if(data.documents.length == 5000){
+        if((data.documents).length == 5000){
             const ofset = offset + 5000
             setOffset(ofset);
             data = data = await dataBaseService.getMessages(ofset)
@@ -46,13 +46,13 @@ const Massages = () => {
                         if (message.userTo == 1){
                             if (message.userId === userdata.$id) {
                                 return (
-                                    <div>
+                                    <div key={message.$id}>
                                         <Message message={message.message} userId={message.userId}  owner imageUrl={message.image}/>
                                     </div>
                                 )
                             } else{
                                 return (
-                                    <div >
+                                    <div key={message.$id} >
                                         <Message message={message.message} userId={message.userId} imageUrl={message.image}/>
                                     </div>
                                 )

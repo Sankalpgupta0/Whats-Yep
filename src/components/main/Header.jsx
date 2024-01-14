@@ -41,7 +41,14 @@ const Header = () => {
     <div className='h-20 w-full bg-slate-800 px-10 justify-between flex items-center sticky top-0 z-10'>
         <div>
             <h1 className='text-xl text-white w-full max-sm:text-sm flex items-center'>
-              <Avatar image={storageService.getFilePreview(avatar)}/>
+            {
+              id == undefined ? 
+                <Avatar image={"https://imgs.search.brave.com/KZpta3CE_ipWBsz_PI7oc0gAX7lgiDVBmeuVVJsoTDc/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTMx/MDU0NDM0OS9waG90/by9lYXJ0aC1kYXRh/LmpwZz9zPTYxMng2/MTImdz0wJms9MjAm/Yz1pVHJZS1VtTXMw/NldHeXBseVZOcDdl/cmhMR1NGRm4xbV9Q/enJIak4zUmpnPQ"}/>
+                : <Avatar image={storageService.getFilePreview(avatar)} fallback={username}/>
+              
+            }
+
+            
               Chatting with {username ? username : "world"}</h1>
         </div>
         <div className='flex h-8 w-32 items-center text-white mr-36'>
@@ -50,7 +57,6 @@ const Header = () => {
             <button
             onClick={() => {
               navigate("/Chats");
-              // window.location.reload();
             }}
             >
               < BsChatSquareDotsFill className='text-3xl m-1 cursor-pointer sm:hidden absolute right-36 bottom-5 max-sm:right-16'/>
