@@ -21,6 +21,7 @@ class AuthService {
                 console.error("User creation failed");
             }
         } catch (error) {
+            alert(error)
             console.log("Appwrite serive :: createAccount :: error", error);
         }
     }
